@@ -3,6 +3,10 @@
     "version": "1.0",
     "manifest_version": 3,
     "description": "A simple extension that helps you to keep your posture right while working on your computer.",
+    "permissions": ["notifications", "alarms", "storage"],
+    "background": {
+        "service_worker": "frontend/background.js"
+    },
     "action": {
         "default_popup": "frontend/popup.html"
     }
