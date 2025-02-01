@@ -1,4 +1,3 @@
-"""
 import base64
 import cv2
 import mediapipe as mp
@@ -18,11 +17,17 @@ pose = mp_pose.Pose()
 cap = cv2.VideoCapture(0)
 
 def generate_frames():
-    """ 'Continuously capture frames from the webcam and yield them as MJPEG' """
+    """ Continuously capture frames from the webcam and yield them as MJPEG with posture analysis """
     while True:
         success, frame = cap.read()
         if not success:
             break  # Stop if no frame is read
+
+        # Analyze posture in the current frame
+        posture_status, color = analyze_posture(frame)
+
+        # Overlay posture status on the frame
+        cv2.putText(frame, posture_status, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2, cv2.LINE_AA)
 
         # Convert the frame to JPEG format
         _, buffer = cv2.imencode('.jpg', frame)
@@ -35,12 +40,12 @@ def generate_frames():
 # Video stream route for frontend
 @app.route('/video_feed')
 def video_feed():
-    """ 'Route to provide real-time video streaming' """
+    """ Route to provide real-time video streaming """
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # Analyze posture function
 def analyze_posture(frame):
-    """ 'Analyze posture using MediaPipe Pose detection' """
+    """ Analyze posture using MediaPipe Pose detection """
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     pose_results = pose.process(rgb_frame)
 
@@ -91,5 +96,3 @@ def analyze_posture_route():
 # Run the Flask app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
-
-"""
