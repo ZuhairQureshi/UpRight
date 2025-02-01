@@ -1,0 +1,95 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Elegant, modern font */
+    background-color: #fafafa; /* Soft light grey background */
+    color: #3e2723; /* Dark brownish text color for contrast */
+    width: 420px; /* Set a fixed width for the popup */
+    padding: 25px;
+    margin: 0; /* Remove margin */
+    position: fixed; /* Fixed position on the screen */
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Adjust for true center alignment */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh; /* Set a specific height for the popup */
+    max-height: 400px; /* Maximum height */
+    overflow-y: auto; /* Scroll if content exceeds */
+    border-radius: 10px; /* Rounded corners for a softer feel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow around the popup */
+}
+
+h1 {
+    color: #9c1c1c; /* Rich, bold McMaster Maroon for headings */
+    font-size: 2.5rem; /* Larger heading for emphasis */
+    margin-bottom: 15px; /* Small gap after heading */
+    text-align: center; /* Center the heading */
+}
+
+h2 {
+    color: #9c1c1c; /* Rich, bold McMaster Maroon for headings */
+    font-size: 1.8rem; /* Slightly larger heading */
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700; /* Bold for more prominence */
+}
+
+button {
+    background-color: #ffeb3b; /* Bright yellow buttons */
+    color: #3e2723; /* Dark brown text on buttons */
+    border: none;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border-radius: 8px; /* Softer rounded corners */
+    cursor: pointer;
+    font-size: 1rem; /* Slightly larger font for buttons */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition with scale effect */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Add subtle shadow for depth */
+}
+
+button:hover {
+    background-color: #ffd86b; /* Darker yellow on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+button:focus {
+    outline: none; /* Remove outline on focus for a cleaner look */
+}
+
+video, .video-placeholder {
+    width: 100%;
+    max-width: 330px;
+    height: 200px; /* Adjusted height for the video */
+    margin-top: 15px;
+    border: 2px solid #9c1c1c; /* McMaster Maroon border around video */
+    border-radius: 10px; /* Rounded corners for video */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around video */
+}
+
+.video-placeholder {
+    background-color: #e0e0e0; /* Light gray background for the placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #757575; /* Gray text for placeholder */
+    border-radius: 10px; /* Match rounded corners */
+}
+
+#status {
+    margin-top: 15px;
+    font-style: italic;
+    color: #757575; /* Soft grayish color for status */
+    text-align: center;
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 350px) {
+    body {
+        width: 95%;
+        padding: 15px;
+    }
+    video, .video-placeholder {
+        max-width: 90%;
+    }
+}

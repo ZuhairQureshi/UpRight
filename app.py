@@ -1,3 +1,5 @@
+""" 
+
 # This is the same as the main.py, just implemented as Flask instead.
 
 import cv2
@@ -214,3 +216,4 @@ def video_feed():
 # Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
+ """
