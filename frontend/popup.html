@@ -9,15 +9,17 @@
     body { text-align: center; font-family: Arial, sans-serif; padding: 20px; }
     video { width: 100%; max-width: 300px; }
     button { margin-top: 10px; padding: 10px; }
-    html, body { width: 400px; height: 400px;}
+    html, body { width: 400px; height: 450px;}
   </style>
 </head>
 <body>
   <div class="content"> 
-    <h2>UpRight</h2>
-    <video id="camera" width="640" height="480" autoplay></video>
+    <h1>UpRight</h1>
+    <p>Get notifications every 20 minutes.</p>
+    <video id="camera" width="1000" height="480" autoplay></video>
     <button id="requestCamera">Request Camera Access</button>
     <button id="start" disabled>Start Posture Check</button>
+    <p id="status"></p>
   </div>
   <p id="status"></p>
   <script src="popup.js"></script>

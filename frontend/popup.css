@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif; /* Elegant, modern font */
-    background-color: #fafafa; /* Soft light grey background */
-    color: #3e2723; /* Dark brownish text color for contrast */
+    background-color: #7A958F; /* Soft light grey background */
+    color: #F2E7DD; /* Dark brownish text color for contrast */
     width: 420px; /* Set a fixed width for the popup */
     padding: 25px;
     margin: 0; /* Remove margin */
@@ -12,22 +12,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70vh; /* Set a specific height for the popup */
-    max-height: 400px; /* Maximum height */
+    max-height: 600px; /* Maximum height */
     overflow-y: auto; /* Scroll if content exceeds */
     border-radius: 10px; /* Rounded corners for a softer feel */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow around the popup */
+
 }
 
 h1 {
-    color: #9c1c1c; /* Rich, bold McMaster Maroon for headings */
+    color: #F2E7DD; /* Rich, bold McMaster Maroon for headings */
     font-size: 2.5rem; /* Larger heading for emphasis */
     margin-bottom: 15px; /* Small gap after heading */
     text-align: center; /* Center the heading */
 }
 
 h2 {
-    color: #9c1c1c; /* Rich, bold McMaster Maroon for headings */
+    color: #F2E7DD; /* Rich, bold McMaster Maroon for headings */
     font-size: 1.8rem; /* Slightly larger heading */
     margin-bottom: 15px;
     text-align: center;
@@ -35,8 +35,8 @@ h2 {
 }
 
 button {
-    background-color: #ffeb3b; /* Bright yellow buttons */
-    color: #3e2723; /* Dark brown text on buttons */
+    background-color: #D9B99F; /* Bright yellow buttons */
+    color: #503f2f; /* Dark brown text on buttons */
     border: none;
     padding: 12px 20px;
     margin: 10px 0;
@@ -48,7 +48,7 @@ button {
 }
 
 button:hover {
-    background-color: #ffd86b; /* Darker yellow on hover */
+    background-color: #9FC7B9; /* Darker yellow on hover */
     transform: scale(1.05); /* Slight scale effect on hover */
 }
 
@@ -58,10 +58,10 @@ button:focus {
 
 video, .video-placeholder {
     width: 100%;
-    max-width: 330px;
+    /*max-width: 400px;*/
     height: 200px; /* Adjusted height for the video */
-    margin-top: 15px;
-    border: 2px solid #9c1c1c; /* McMaster Maroon border around video */
+    margin-top: 10px;
+    border: 2px solid #9FC7B9; /* McMaster Maroon border around video */
     border-radius: 10px; /* Rounded corners for video */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around video */
 }
@@ -79,8 +79,9 @@ video, .video-placeholder {
 #status {
     margin-top: 15px;
     font-style: italic;
-    color: #757575; /* Soft grayish color for status */
+    color: #F2E7DD; /* Soft grayish color for status */
     text-align: center;
+    font-size: 20px; 
 }
 
 /* Optional: Responsive adjustments */
