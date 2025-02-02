@@ -12,6 +12,10 @@ CORS(app)
 # Initialize Mediapipe Pose
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
+mp_face_mesh = mp.solutions.face_mesh
+face_mesh = mp_face_mesh.FaceMesh(refine_landmarks=True)  # Refine landmarks for better eye detection
+
+mp_drawing = mp.solutions.drawing_utils
 
 # OpenCV video capture (0 = default webcam)
 cap = cv2.VideoCapture(0)
@@ -48,6 +52,7 @@ def analyze_posture(frame):
     """ Analyze posture using MediaPipe Pose detection """
     rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     pose_results = pose.process(rgb_frame)
+    face_results = face_mesh.process(rgb_frame)
 
     posture_status = "Good Posture"
     color = (0, 255, 0)  # Green
@@ -66,6 +71,46 @@ def analyze_posture(frame):
         if should_diff > threshold:
             posture_status = "Bad Posture (Shoulders Tilted)"
             color = (0, 0, 255)  # Red
+
+
+    # Draw face landmarks
+    if face_results.multi_face_landmarks and not posture_status == "Bad Posture (Shoulders Tilted)":
+        for face_landmarks in face_results.multi_face_landmarks:
+            #mp_drawing.draw_landmarks(frame, face_landmarks, mp_face_mesh.FACEMESH_TESSELATION)
+
+            # Extract key points
+            nose_tip = face_landmarks.landmark[1]   # Nose Tip
+            chin = face_landmarks.landmark[152]     # Chin
+            left_ear = face_landmarks.landmark[234]  # Left Ear
+            right_ear = face_landmarks.landmark[454] # Right Ear
+
+            # Get z-coordinates (depth)
+            nose_z = nose_tip.z
+            chin_z = chin.z
+            left_ear_z = left_ear.z
+            right_ear_z = right_ear.z
+
+            # Compute depth differences
+            ear_avg_z = (left_ear_z + right_ear_z) / 2
+            nose_chin_avg_z = (nose_z + chin_z) / 2
+
+            #Compute depth difference angle
+            avg_ear_z = (left_ear.z + right_ear.z) / 2
+            avg_ear_y = (left_ear.y + right_ear.y) / 2
+
+            avg_nose_z = (nose_tip.z + chin.z) / 2
+            avg_nose_y = (nose_tip.y + chin.y) / 2
+
+            head_neck_angle = np.arctan2(avg_ear_z - avg_nose_z, avg_ear_y - avg_nose_y)
+
+            # Check if head is tilted forward (bad posture)
+            if (head_neck_angle > 2.50 or head_neck_angle < 2.10):  # Adjust threshold as needed
+                posture_status = "Bad Posture (Head Tilted)"
+                color = (0, 0, 255)  # Red
+
+            else:
+                posture_status = "Good Posture"
+                color = (0, 255, 0)  # Green
 
     return posture_status, color
 

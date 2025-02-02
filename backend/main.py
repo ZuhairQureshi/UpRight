@@ -128,36 +128,14 @@ while cap.isOpened():
                 avg_nose_y = (nose_tip.y + chin.y) / 2
 
                 head_neck_angle = np.arctan2(avg_ear_z - avg_nose_z, avg_ear_y - avg_nose_y)
-                ears_angle = np.arctan2(left_ear.z - right_ear.z, left_ear.x - right_ear.x)
-                ear_ang += ears_angle
-
 
                 # Check if head is tilted forward (bad posture)
                 if (head_neck_angle > 2.50 or head_neck_angle < 2.10):  # Adjust threshold as needed
-                    total_bad_ear_z += ear_avg_z
-                    bad_ear_count += 1
-
-                    total_bad_nose_z += nose_chin_avg_z
-                    bad_nose_count += 1
-
-                    bad_angle += head_neck_angle
-                    bad_ear_angle += ears_angle
-
                     posture_status = "Bad Posture (Head Tilted)"
                     color = (0, 0, 255)  # Red
 
                 else:
                     posture_status = "Good Posture"
-
-                    total_good_ear_z += ear_avg_z
-                    good_ear_count += 1
-
-                    good_angle += head_neck_angle
-                    good_ear_angle += ears_angle
-
-                    total_good_nose_z += nose_chin_avg_z
-                    good_nose_count += 1
-
                     color = (0, 255, 0)  # Green
 
     # Display Result

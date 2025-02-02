@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Analyze posture every 1000ms (1 second)
-    setInterval(analyzePosture, 1000);
+    setInterval(analyzePosture, 100);
   }
 });
 
