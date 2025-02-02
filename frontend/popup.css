@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif; /* Elegant, modern font */
+    font-family: 'Poppins', sans-serif ; /* Elegant, modern font */
     background-color: #7A958F; /* Soft light grey background */
     color: #F2E7DD; /* Dark brownish text color for contrast */
     width: 420px; /* Set a fixed width for the popup */
@@ -20,10 +20,13 @@ body {
 }
 
 h1 {
+    font-family: 'Poppins', sans-serif !important;
     color: #F2E7DD; /* Rich, bold McMaster Maroon for headings */
     font-size: 2.5rem; /* Larger heading for emphasis */
     margin-bottom: 15px; /* Small gap after heading */
     text-align: center; /* Center the heading */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 h2 {
@@ -34,8 +37,12 @@ h2 {
     font-weight: 700; /* Bold for more prominence */
 }
 
+p {
+    font-family: 'Poppins', sans-serif !important;
+}
+
 button {
-    background-color: #D9B99F; /* Bright yellow buttons */
+    background-color:#F2E7DD; /* Bright yellow buttons */
     color: #503f2f; /* Dark brown text on buttons */
     border: none;
     padding: 12px 20px;
@@ -81,7 +88,7 @@ video, .video-placeholder {
     font-style: italic;
     color: #F2E7DD; /* Soft grayish color for status */
     text-align: center;
-    font-size: 20px; 
+    font-size: 15px; 
 }
 
 /* Optional: Responsive adjustments */
